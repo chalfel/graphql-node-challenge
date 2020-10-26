@@ -41,7 +41,7 @@ Após isso, basta executar o seguinte comando:
 ```sh
 yarn dev
 ```
-
+Após isso, acessar o endereço http://localhost:3333/graphql
 
 ## Execução em produção
 
