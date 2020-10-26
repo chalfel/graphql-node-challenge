@@ -1,32 +1,43 @@
-<h1 align="center">Welcome to Digital Bank Challenge 👋</h1>
+<h1 align="center">Bem Vindo ao Digital Bank Challenge 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
+  <img alt="Coverage" src="https://img.shields.io/badge/coverage-95%25-green" />
 </p>
 
-> Digital Bank Code Challenge using Graphql and NodeJS
+## Tecnologias utilizadas
+ - *GraphQl*
+ - *NodeJS*
+ - *Jest*
+ - *Docker*
+ - *MongoDB*
+ - *Mongoose*
+ - *Husky*
+ - *Eslint*
 
-## Install
+
+## Instalação
 
 ```sh
 yarn
 ```
 
-## Usage
+## Uso
 
 ```sh
 docker-compose up -d
 ```
+Após isso, acessar o endereço http://localhost:3333/graphql
 
-## Run tests
+## Executar testes
 
 ```sh
 yarn test
 ```
 
-## Author
+## Autor
 
 👤 **Caio Felix**
 
@@ -34,9 +45,5 @@ yarn test
 * Github: [@chalfel](https://github.com/chalfel)
 * LinkedIn: [@caio-felix](https://linkedin.com/in/caio-felix)
 
-## Show your support
-
-Give a ⭐️ if this project helped you!
 
 ***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
