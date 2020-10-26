@@ -1,0 +1,14 @@
+type Account {
+  _id: ID!
+  saldo: Float!
+  conta: Int!
+}
+
+type Query {
+  saldo(conta: Int!): Float!
+}
+
+type Mutation {
+  sacar(conta: Int!, valor: Float!): Account!
+  depositar(conta: Int!, valor: Float!): Account!
+}

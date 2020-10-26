@@ -1,0 +1,31 @@
+{
+  "name": "node-graphql-challenge",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@shelf/jest-mongodb": "^1.2.3",
+    "eslint": "^7.12.0",
+    "eslint-config-standard": "^15.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.2",
+    "husky": "^4.3.0",
+    "jest": "^26.6.1",
+    "lint-staged": "^10.4.2",
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "apollo-server": "^2.18.2",
+    "dotenv": "^8.2.0",
+    "graphql": "^15.3.0",
+    "merge-graphql-schemas": "^1.7.8",
+    "mongoose": "^5.10.10"
+  },
+  "scripts": {
+    "test": "jest --collectCoverage",
+    "start": "node src/index.js",
+    "dev": "npx nodemon src/index.js -e js,gql"
+  }
+}
