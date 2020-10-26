@@ -1,9 +1,8 @@
 
 class ContaController {
-  constructor (account, ContaRepository, ContaValidator) {
-    this.account = account
-    this.validadorConta = new ContaValidator()
-    this.repositorioConta = new ContaRepository(account)
+  constructor (repositorioConta, validadorConta) {
+    this.repositorioConta = repositorioConta
+    this.validadorConta = validadorConta
   }
 
   async saldo (_, { conta }) {

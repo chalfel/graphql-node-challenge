@@ -4,7 +4,7 @@ const Account = require('../../../models/Conta')
 const ContaRepository = require('../../../repositories/Conta')
 const ContaValidator = require('../../../validators/Conta')
 
-const contaController = new ContaController(Account, ContaRepository, ContaValidator)
+const contaController = new ContaController(new ContaRepository(Account), new ContaValidator())
 
 module.exports = {
   Query: {

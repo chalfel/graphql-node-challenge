@@ -5,6 +5,7 @@ const Account = require('../../models/Conta')
 const ContaRepository = require('../../repositories/Conta')
 const ContaValidator = require('../../validators/Conta')
 const errorMessages = require('../../utils/errorMessages')
+const Conta = require('../../models/Conta')
 
 dotenv.config()
 
@@ -25,7 +26,7 @@ describe('Account Controller', () => {
     await Account.findOneAndDelete({ conta: 123456 })
   })
   it('Should deposit money', async () => {
-    const sut = new ContaController(Account, ContaRepository, ContaValidator)
+    const sut = new ContaController(new ContaRepository(Conta), new ContaValidator())
 
     const response = await sut.depositar({}, { conta: 123456, valor: 23.55 })
 
@@ -34,7 +35,7 @@ describe('Account Controller', () => {
     expect(response).toHaveProperty('_id')
   })
   it('Should withdraw money', async () => {
-    const sut = new ContaController(Account, ContaRepository, ContaValidator)
+    const sut = new ContaController(new ContaRepository(Conta), new ContaValidator())
 
     const response = await sut.sacar({}, { conta: 123456, valor: 10.20 })
 
@@ -43,7 +44,7 @@ describe('Account Controller', () => {
     expect(response).toHaveProperty('_id')
   })
   it('Should return error when it has insufficient balance', async () => {
-    const sut = new ContaController(Account, ContaRepository, ContaValidator)
+    const sut = new ContaController(new ContaRepository(Conta), new ContaValidator())
 
     try {
       await sut.sacar({}, { conta: 123456, valor: 9999.99 })
@@ -52,7 +53,7 @@ describe('Account Controller', () => {
     }
   })
   it('Should return balance', async () => {
-    const sut = new ContaController(Account, ContaRepository, ContaValidator)
+    const sut = new ContaController(new ContaRepository(Conta), new ContaValidator())
 
     const response = await sut.saldo({}, { conta: 123456 })
 
@@ -60,7 +61,7 @@ describe('Account Controller', () => {
   })
 
   it('Should return account not found error when try to get balance', async () => {
-    const sut = new ContaController(Account, ContaRepository, ContaValidator)
+    const sut = new ContaController(new ContaRepository(Conta), new ContaValidator())
 
     try {
       await sut.saldo({}, { conta: 22323 })
@@ -70,7 +71,7 @@ describe('Account Controller', () => {
   })
 
   it('Should return account not found error when try to get balance and not sending account', async () => {
-    const sut = new ContaController(Account, ContaRepository, ContaValidator)
+    const sut = new ContaController(new ContaRepository(Conta), new ContaValidator())
 
     try {
       await sut.saldo({}, { conta: 22323 })
@@ -80,7 +81,7 @@ describe('Account Controller', () => {
   })
 
   it('Should return account not found error when try to withdraw', async () => {
-    const sut = new ContaController(Account, ContaRepository, ContaValidator)
+    const sut = new ContaController(new ContaRepository(Conta), new ContaValidator())
 
     try {
       await sut.sacar({}, { valor: 2000 })
@@ -90,7 +91,7 @@ describe('Account Controller', () => {
   })
 
   it('Should return an account not found error when try to withdraw', async () => {
-    const sut = new ContaController(Account, ContaRepository, ContaValidator)
+    const sut = new ContaController(new ContaRepository(Conta), new ContaValidator())
 
     try {
       await sut.sacar({}, { conta: 22323 })
@@ -100,7 +101,7 @@ describe('Account Controller', () => {
   })
 
   it('Should return an empty value error when try to withdraw', async () => {
-    const sut = new ContaController(Account, ContaRepository, ContaValidator)
+    const sut = new ContaController(new ContaRepository(Conta), new ContaValidator())
 
     try {
       await sut.sacar({}, { conta: 123456 })
@@ -110,7 +111,7 @@ describe('Account Controller', () => {
   })
 
   it('Should return account not found error when try to deposit', async () => {
-    const sut = new ContaController(Account, ContaRepository, ContaValidator)
+    const sut = new ContaController(new ContaRepository(Conta), new ContaValidator())
 
     try {
       await sut.depositar({}, { valor: 2000 })
@@ -120,7 +121,7 @@ describe('Account Controller', () => {
   })
 
   it('Should return an account not found error when try to deposit', async () => {
-    const sut = new ContaController(Account, ContaRepository, ContaValidator)
+    const sut = new ContaController(new ContaRepository(Conta), new ContaValidator())
 
     try {
       await sut.sacar({}, { conta: 22323 })
@@ -130,7 +131,7 @@ describe('Account Controller', () => {
   })
 
   it('Should return an empty value error when try to deposit', async () => {
-    const sut = new ContaController(Account, ContaRepository, ContaValidator)
+    const sut = new ContaController(new ContaRepository(Conta), new ContaValidator())
 
     try {
       await sut.depositar({}, { conta: 123456 })
@@ -140,7 +141,7 @@ describe('Account Controller', () => {
   })
 
   it('Should return negative value error when try to deposit', async () => {
-    const sut = new ContaController(Account, ContaRepository, ContaValidator)
+    const sut = new ContaController(new ContaRepository(Conta), new ContaValidator())
 
     try {
       await sut.depositar({}, { conta: 123456, valor: -2000 })
@@ -150,7 +151,7 @@ describe('Account Controller', () => {
   })
 
   it('Should return negative value error when try to withdraw', async () => {
-    const sut = new ContaController(Account, ContaRepository, ContaValidator)
+    const sut = new ContaController(new ContaRepository(Conta), new ContaValidator())
 
     try {
       await sut.sacar({}, { conta: 123456, valor: -2000 })

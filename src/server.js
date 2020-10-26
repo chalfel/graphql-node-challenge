@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 class Server {
   constructor (typeDefs, resolvers) {
     this.database()
-    this.app = new ApolloServer({ typeDefs, resolvers, playground: true })
+    this.app = new ApolloServer({ typeDefs, resolvers, playground: true, introspection: true })
   }
 
   database () {

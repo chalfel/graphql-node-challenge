@@ -19,12 +19,31 @@
 
 
 ## Instalação
-
+Primeiramente é necessário possuir:
+ - NodeJS
+ - Docker
+ - Yarn(opcional)
+ 
+ Tendo os mesmos instalados, basta executar o comando
 ```sh
 yarn
+ou
+npm install
 ```
 
-## Uso
+## Execução em ambiente de dev
+
+Primeiramente, é necessário iniciar o container do MongoDB utilizando o comando:
+```sh
+docker-compose -f docker-compose.dev.yml up
+```
+Após isso, basta executar o seguinte comando: 
+```sh
+yarn dev
+```
+
+
+## Execução em produção
 
 ```sh
 docker-compose up -d
